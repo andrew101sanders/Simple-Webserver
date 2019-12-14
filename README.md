@@ -1,5 +1,5 @@
 # Simple-Webserver
-This is a webserver that you can run on your computer.
+This is a web server that you can run on your computer.
 
 Type the IP address of your computer to access the files in the "files" folder
 
