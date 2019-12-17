@@ -15,9 +15,9 @@ app.post('/u', function(req, res){
     }
     else{
         let uploadedfile = req.files.thefile;
-        res.send('<p>good job wow nice 1 uploading: '+uploadedfile.name+'<p>');
+        res.send('<p>you uploaded: '+uploadedfile.name+'<p>');
         fs.writeFile(path.join(__dirname, '/files/'+uploadedfile.name), uploadedfile.data, function(err){
-            console.log(err);
+            if (err) console.log(err);
         });
         console.log(uploadedfile);
     }
