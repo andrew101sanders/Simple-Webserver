@@ -4,7 +4,10 @@ const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const serveIndex = require('serve-index');
 const app = express();
-app.use(fileUpload());
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
 app.get('/*', express.static(path.join(__dirname,'/files')));
 app.get('/*', serveIndex(path.join(__dirname, '/files'),{'icons': true}));
 
