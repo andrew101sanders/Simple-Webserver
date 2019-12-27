@@ -8,5 +8,5 @@ Type the IP address of your computer and /u (e.g. 192.168.1.5/u) to upload files
 If you want to access your webserver from outside your subnet, make sure you port forward port 80 (or whatever port you set on line 31 of app.js) to your IP address.
 
 Installation:
-  - Install https://nodejs.org/en/download/
+  - Install NodeJS from https://nodejs.org/en/download/
   - Click "startServer.bat"
