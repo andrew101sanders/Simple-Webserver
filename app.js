@@ -6,7 +6,8 @@ const serveIndex = require('serve-index');
 const app = express();
 app.use(fileUpload({
     useTempFiles : true,
-    tempFileDir : '/tmp/'
+    tempFileDir : '/tmp/',
+    debug : true
 }));
 app.get('/*', express.static(path.join(__dirname,'/files')));
 app.get('/*', serveIndex(path.join(__dirname, '/files'),{'icons': true}));
@@ -18,11 +19,11 @@ app.post('/u', function(req, res){
     }
     else{
         let uploadedfile = req.files.thefile;
+	uploadedfile.mv(path.join(__dirname, '/files/'+uploadedfile.name), function(err) {
+    	if (err)
+      		return res.status(500).send(err);
+  });
         res.send('<p>you uploaded: '+uploadedfile.name+'<p>');
-        fs.writeFile(path.join(__dirname, '/files/'+uploadedfile.name), uploadedfile.data, function(err){
-            if (err) console.log(err);
-        });
-        console.log(uploadedfile);
     }
     
 });
